@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+.glass {
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset 0px 4px 4px 0px rgba(255,255,255,0.25);
+}
+
+.glass-dark {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: inset 0px 4px 4px 0px rgba(255,255,255,0.15);
+}
+
+.glass-btn {
+  background: rgba(0,132,255,0.8);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: none;
+  border-radius: 16px;
+  color: white;
+  box-shadow: inset 0px 4px 4px 0px rgba(255,255,255,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.glass-btn:hover {
+  transform: scale(1.02);
+}
+
+.glass-input {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #1A1A2E;
+  transition: border-color 0.2s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: #0084FF;
+  box-shadow: 0 0 0 3px rgba(0,132,255,0.15);
+}
+
+.glass-input::placeholder {
+  color: #8991A3;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.hero-glow-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(96,177,255,0.3), rgba(49,154,255,0.1));
+  top: -200px;
+  left: -200px;
+}
+
+.hero-glow-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(49,154,255,0.2), transparent);
+  bottom: -100px;
+  right: -100px;
+}
+
+@keyframes orb-rotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.glass-orb {
+  animation: orb-rotate 20s linear infinite, orb-pulse 4s ease-in-out infinite;
+}
+
+.card-entrance {
+  opacity: 0;
+  transform: translateY(20px);
+}

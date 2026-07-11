@@ -1,17 +1,12 @@
-// Emula la API window.storage (usada por el componente) sobre localStorage,
-// para que TradingJournal.jsx funcione igual aquí que en la vista previa de Claude.
+const DB_KEY = '__tapeline_kv__';
+
+const readDb = () => {
+  try { return JSON.parse(localStorage.getItem(DB_KEY) || '{}'); }
+  catch { return {}; }
+};
+const writeDb = (db) => localStorage.setItem(DB_KEY, JSON.stringify(db));
+
 if (typeof window !== 'undefined' && !window.storage) {
-  const DB_KEY = '__tapeline_kv__';
-
-  const readDb = () => {
-    try {
-      return JSON.parse(localStorage.getItem(DB_KEY) || '{}');
-    } catch {
-      return {};
-    }
-  };
-  const writeDb = (db) => localStorage.setItem(DB_KEY, JSON.stringify(db));
-
   window.storage = {
     async get(key) {
       const db = readDb();

@@ -1,0 +1,64 @@
+import { useMemo } from 'react';
+import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ZAxis, BarChart, Bar, Cell } from 'recharts';
+import { fmtPct, fmtRatio } from '../../utils/formatters';
+import { THRESHOLDS } from '../../utils/constants';
+
+export default function VolatilidadTab({ volatilityStats, trades }) {
+  const scatterData = useMemo(() => {
+    return trades
+      .filter((t) => t.vix !== '' && t.vix !== undefined && t.vix !== null)
+      .map((t) => {
+        const entry = Number(t.entryPrice) || 0;
+        const exit = Number(t.exitPrice) || 0;
+        const dir = t.direction === 'short' ? -1 : 1;
+        const points = (exit - entry) * dir;
+        return { vix: Number(t.vix), rMultiple: points / (Math.abs(entry) || 1), trade: t.symbol };
+      });
+  }, [trades]);
+
+  const hasData = volatilityStats.some((v) => v.count > 0);
+
+  return (
+    <div className="analytics-section">
+      <h4>Profit Factor y Win Rate por régimen de VIX/ATR</h4>
+      {!hasData ? <p className="hint">Registra el VIX/ATR en tus trades o fichas de Pre-Market para ver este desglose.</p> : (
+        <>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={volatilityStats.filter((v) => v.count > 0)}>
+              <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
+              <YAxis yAxisId="left" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
+              <YAxis yAxisId="right" orientation="right" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
+              <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8 }} />
+              <Bar yAxisId="left" dataKey="pf" name="Profit Factor" fill="#D8A657" radius={[4, 4, 0, 0]} />
+              <Bar yAxisId="right" dataKey="winRate" name="Win Rate %" fill="#4FAE7C" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+          <table className="metric-table mt-4"><tbody>
+            {volatilityStats.map((v, i) => (
+              <tr key={i}><td>{v.name}</td><td>{v.count} trades · PF {fmtRatio(v.pf)} · {fmtPct(v.winRate)} win rate</td></tr>
+            ))}
+          </tbody></table>
+        </>
+      )}
+      {scatterData.length > 3 && (
+        <div className="analytics-section">
+          <h4>VIX vs R-Multiple (cada punto es un trade)</h4>
+          <ResponsiveContainer width="100%" height={250}>
+            <ScatterChart>
+              <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
+              <XAxis dataKey="vix" name="VIX" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
+              <YAxis dataKey="rMultiple" name="R-Multiple" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
+              <ZAxis range={[30, 30]} />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8 }} />
+              <Scatter data={scatterData} fill="#D8A657" opacity={0.6} />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+      {volatilityStats.find((v) => v.name === 'Alta (Expansión)')?.pf < 1 && volatilityStats.find((v) => v.name === 'Alta (Expansión)')?.count > 0 && (
+        <div className="kpi-note down">Tu ventaja (edge) parece desaparecer cuando la volatilidad es alta (VIX &gt; {THRESHOLDS.highVix}). Considera reducir tamaño o no operar esos días.</div>
+      )}
+    </div>
+  );
+}
