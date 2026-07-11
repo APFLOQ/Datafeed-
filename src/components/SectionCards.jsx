@@ -22,9 +22,9 @@ export default function SectionCards({ stats }) {
               {item.label}
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="min-w-0">
             <span className={cn(
-              'font-mono text-xl font-semibold tracking-tight',
+              'font-mono text-xl font-semibold tracking-tight truncate block',
               item.tone === 'up' ? 'text-success' : item.tone === 'down' ? 'text-destructive' : '',
             )}>
               {item.value}

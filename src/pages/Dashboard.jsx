@@ -236,17 +236,17 @@ function DisplayTable({ trades, strategies }) {
           const pnl = (exit - entry) * qty * dir
           return (
             <TableRow key={t.id || i}>
-              <TableCell className="font-medium">{t.date}</TableCell>
-              <TableCell>{t.symbol}</TableCell>
+              <TableCell className="font-medium whitespace-nowrap">{t.date}</TableCell>
+              <TableCell className="truncate max-w-[80px]">{t.symbol}</TableCell>
               <TableCell>
                 <span className={t.direction === 'long' ? 'text-success' : 'text-destructive'}>
                   {t.direction}
                 </span>
               </TableCell>
-              <TableCell className="font-mono">{entry.toFixed(2)}</TableCell>
-              <TableCell className="font-mono">{exit.toFixed(2)}</TableCell>
-              <TableCell>{qty}</TableCell>
-              <TableCell className={`text-right font-mono ${pnl >= 0 ? 'text-success' : 'text-destructive'}`}>
+              <TableCell className="font-mono whitespace-nowrap">{entry.toFixed(2)}</TableCell>
+              <TableCell className="font-mono whitespace-nowrap">{exit.toFixed(2)}</TableCell>
+              <TableCell className="whitespace-nowrap">{qty}</TableCell>
+              <TableCell className={`text-right font-mono whitespace-nowrap ${pnl >= 0 ? 'text-success' : 'text-destructive'}`}>
                 {pnl >= 0 ? '+' : ''}${pnl.toFixed(2)}
               </TableCell>
             </TableRow>
