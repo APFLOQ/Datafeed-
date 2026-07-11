@@ -25,7 +25,7 @@ export default function SectionCards({ stats }) {
           <CardContent>
             <span className={cn(
               'font-mono text-xl font-semibold tracking-tight',
-              item.tone === 'up' ? 'text-emerald-600' : item.tone === 'down' ? 'text-red-600' : '',
+              item.tone === 'up' ? 'text-success' : item.tone === 'down' ? 'text-destructive' : '',
             )}>
               {item.value}
             </span>

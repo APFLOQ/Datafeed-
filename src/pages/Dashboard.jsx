@@ -239,14 +239,14 @@ function DisplayTable({ trades, strategies }) {
               <TableCell className="font-medium">{t.date}</TableCell>
               <TableCell>{t.symbol}</TableCell>
               <TableCell>
-                <span className={t.direction === 'long' ? 'text-emerald-600' : 'text-red-600'}>
+                <span className={t.direction === 'long' ? 'text-success' : 'text-destructive'}>
                   {t.direction}
                 </span>
               </TableCell>
               <TableCell className="font-mono">{entry.toFixed(2)}</TableCell>
               <TableCell className="font-mono">{exit.toFixed(2)}</TableCell>
               <TableCell>{qty}</TableCell>
-              <TableCell className={`text-right font-mono ${pnl >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+              <TableCell className={`text-right font-mono ${pnl >= 0 ? 'text-success' : 'text-destructive'}`}>
                 {pnl >= 0 ? '+' : ''}${pnl.toFixed(2)}
               </TableCell>
             </TableRow>
