@@ -1,9 +1,8 @@
 import { useAuth } from '../hooks/useAuth';
 import LoginForm from '../components/Auth/LoginForm';
-import DiscordButton from '../components/Auth/DiscordButton';
 
 export default function AuthPage({ onClose }) {
-  const { signInWithEmail, signUpWithEmail, signInWithDiscord } = useAuth();
+  const { signInWithEmail, signUpWithEmail } = useAuth();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm" onClick={onClose}>
@@ -14,14 +13,6 @@ export default function AuthPage({ onClose }) {
         </div>
 
         <LoginForm onEmailSignIn={signInWithEmail} onEmailSignUp={signUpWithEmail} />
-
-        <div className="flex items-center gap-3 my-5">
-          <div className="flex-1 h-px bg-glass-border" />
-          <span className="text-text-faint text-xs">or</span>
-          <div className="flex-1 h-px bg-glass-border" />
-        </div>
-
-        <DiscordButton onLogin={signInWithDiscord} />
       </div>
     </div>
   );
