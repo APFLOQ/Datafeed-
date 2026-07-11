@@ -64,10 +64,10 @@ export default function Dashboard() {
   return (
     <SidebarProvider style={{ '--sidebar-width': 'calc(var(--spacing) * 72)' }}>
       <AppSidebar activeSection={activeSection} onSectionChange={setActiveSection} />
-      <SidebarInset className="min-w-0">
+      <SidebarInset className="min-w-0 overflow-x-hidden">
         <SiteHeader dateRange={dateRange} onDateRangeChange={setDateRange} sectionTitle={sectionTitle} />
-        <div className="flex flex-1 flex-col min-w-0">
-          <div className="@container/main flex flex-1 flex-col gap-2 min-w-0">
+        <div className="flex flex-1 flex-col min-w-0 max-w-full">
+          <div className="@container/main flex flex-1 flex-col gap-2 min-w-0 max-w-full">
             <div ref={dashboardRef} className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 min-w-0">
               {activeSection === 'dashboard' && (
                 <>

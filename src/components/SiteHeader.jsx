@@ -18,19 +18,19 @@ const ranges = [
 
 export default function SiteHeader({ dateRange, onDateRangeChange, sectionTitle }) {
   return (
-    <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
-      <div className="flex items-center gap-2">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb>
+    <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4 min-w-0">
+      <div className="flex items-center gap-2 min-w-0 overflow-hidden">
+        <SidebarTrigger className="-ml-1 shrink-0" />
+        <Separator orientation="vertical" className="mr-2 h-4 shrink-0" />
+        <Breadcrumb className="truncate">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbPage>{sectionTitle || 'Dashboard'}</BreadcrumbPage>
+              <BreadcrumbPage className="truncate">{sectionTitle || 'Dashboard'}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div className="ml-auto">
+      <div className="ml-auto shrink-0">
         <Select value={dateRange} onValueChange={onDateRangeChange}>
           <SelectTrigger className="w-32">
             <SelectValue />
