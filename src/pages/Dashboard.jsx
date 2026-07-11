@@ -76,10 +76,10 @@ export default function Dashboard() {
                     <ChartAreaInteractive trades={trades} />
                   </div>
                   <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2 min-w-0">
-                    <Card className="min-w-0">
+                    <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
                       <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                        <ArrowLeftRight size={14} className="text-primary shrink-0" />
-                        <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
+                        <ArrowLeftRight size={14} className="text-signal-orange shrink-0" />
+                        <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
                           Recent Trades
                         </CardTitle>
                       </CardHeader>
@@ -87,10 +87,10 @@ export default function Dashboard() {
                         <DisplayTable trades={trades.slice(0, 10)} strategies={strategies} />
                       </CardContent>
                     </Card>
-                    <Card className="min-w-0">
+                    <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
                       <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                        <Calendar size={14} className="text-primary shrink-0" />
-                        <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
+                        <Calendar size={14} className="text-signal-orange shrink-0" />
+                        <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
                           Calendar
                         </CardTitle>
                       </CardHeader>
@@ -110,10 +110,10 @@ export default function Dashboard() {
 
               <SectionWrapper sectionId="trades" activeSection={activeSection}>
                 <div className="px-4 lg:px-6 min-w-0">
-                  <Card className="min-w-0">
+                  <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <ArrowLeftRight size={14} className="text-primary shrink-0" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
+                      <ArrowLeftRight size={14} className="text-signal-orange shrink-0" />
+                      <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
                         All Trades
                       </CardTitle>
                     </CardHeader>
@@ -132,10 +132,10 @@ export default function Dashboard() {
 
               <SectionWrapper sectionId="calendar" activeSection={activeSection}>
                 <div className="px-4 lg:px-6 min-w-0">
-                  <Card className="min-w-0">
+                  <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <Calendar size={14} className="text-primary shrink-0" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
+                      <Calendar size={14} className="text-signal-orange shrink-0" />
+                      <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
                         Trade Calendar
                       </CardTitle>
                     </CardHeader>
@@ -154,10 +154,10 @@ export default function Dashboard() {
 
               <SectionWrapper sectionId="premarket" activeSection={activeSection}>
                 <div className="px-4 lg:px-6 min-w-0">
-                  <Card className="min-w-0">
+                  <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <Target size={14} className="text-primary shrink-0" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
+                      <Target size={14} className="text-signal-orange shrink-0" />
+                      <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
                         Pre-Market
                       </CardTitle>
                     </CardHeader>
@@ -170,10 +170,10 @@ export default function Dashboard() {
 
               <SectionWrapper sectionId="playbook" activeSection={activeSection}>
                 <div className="px-4 lg:px-6 min-w-0">
-                  <Card className="min-w-0">
+                  <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <BookOpen size={14} className="text-primary shrink-0" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
+                      <BookOpen size={14} className="text-signal-orange shrink-0" />
+                      <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
                         Playbook
                       </CardTitle>
                     </CardHeader>

@@ -33,13 +33,15 @@ export default function ChartAreaInteractive({ trades }) {
   }, [chartData, timeRange])
 
   const chartConfig = {
-    pnl: { label: 'Equity', color: 'var(--primary)' },
+    pnl: { label: 'Equity', color: '#ee6018' },
   }
 
   return (
-    <Card className="@container/card">
+    <Card className="@container/card shadow-none border-[#3d3a39]">
       <CardHeader>
-        <CardTitle>Equity Curve</CardTitle>
+        <CardTitle className="font-['Geist',sans-serif] text-[14px] font-[400] tracking-[-0.025em] text-[#eeeeee]">
+          Equity Curve
+        </CardTitle>
         <CardAction>
           <ToggleGroup
             type="single"
@@ -71,11 +73,11 @@ export default function ChartAreaInteractive({ trades }) {
           <AreaChart data={filteredData.length > 0 ? filteredData : [{ date: '', pnl: 0 }]}>
             <defs>
               <linearGradient id="fillPnl" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--color-pnl)" stopOpacity={1} />
-                <stop offset="95%" stopColor="var(--color-pnl)" stopOpacity={0.1} />
+                <stop offset="5%" stopColor="#ee6018" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#ee6018" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid vertical={false} />
+            <CartesianGrid vertical={false} stroke="#3d3a39" />
             <XAxis
               dataKey="date"
               tickLine={false}
@@ -83,6 +85,8 @@ export default function ChartAreaInteractive({ trades }) {
               tickMargin={8}
               minTickGap={32}
               tickFormatter={(v) => v ? v.slice(5) : ''}
+              stroke="#8a8380"
+              style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11 }}
             />
             <ChartTooltip
               cursor={false}
@@ -92,7 +96,7 @@ export default function ChartAreaInteractive({ trades }) {
               dataKey="pnl"
               type="monotone"
               fill="url(#fillPnl)"
-              stroke="var(--color-pnl)"
+              stroke="#ee6018"
               strokeWidth={2}
             />
           </AreaChart>

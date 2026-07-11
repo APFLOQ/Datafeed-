@@ -7,30 +7,17 @@ export default {
         transparent: 'transparent',
         current: 'currentColor',
         white: '#FFFFFF',
-        glass: {
-          DEFAULT: 'rgba(255,255,255,0.3)',
-          dark: 'rgba(0,0,0,0.1)',
-          border: 'rgba(0,0,0,0.1)',
-        },
-        brand: {
-          blue: '#0084FF',
-          light: '#60B1FF',
-          lighter: '#319AFF',
-          glow: 'rgba(0,132,255,0.08)',
-        },
-        profit: {
-          DEFAULT: '#4FAE7C',
-          dim: 'rgba(79,174,124,0.12)',
-        },
-        loss: {
-          DEFAULT: '#E0685A',
-          dim: 'rgba(224,104,90,0.12)',
-        },
-        text: {
-          DEFAULT: '#1A1A2E',
-          dim: '#5B6478',
-          faint: '#8991A3',
-        },
+        // Factory specific tokens
+        'obsidian-canvas': '#101010',
+        'carbon-lift': '#1d1a18',
+        'ash-stroke': '#3d3a39',
+        'graphite-mid': '#4d4947',
+        'warm-granite': '#8a8380',
+        'pale-stone': '#b8b3b0',
+        bone: '#eeeeee',
+        chalk: '#fafafa',
+        signal: { DEFAULT: '#ee6018', orange: '#ee6018' },
+        metric: { DEFAULT: '#a0ca92', green: '#a0ca92' },
         // shadcn CSS variable tokens
         background: 'var(--background)',
         foreground: 'var(--foreground)',
@@ -65,6 +52,10 @@ export default {
           DEFAULT: 'var(--destructive)',
           foreground: 'var(--destructive-foreground)',
         },
+        success: {
+          DEFAULT: 'var(--success)',
+          foreground: 'var(--success-foreground)',
+        },
         chart: {
           1: 'var(--chart-1)',
           2: 'var(--chart-2)',
@@ -84,21 +75,16 @@ export default {
         },
       },
       fontFamily: {
-        brand: ['Fustat', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
-        mono: ['IBM Plex Mono', 'monospace'],
-      },
-      backdropBlur: {
-        glass: '50px',
-      },
-      boxShadow: {
-        glass: 'inset 0px 4px 4px 0px rgba(255,255,255,0.25)',
-        'glass-hover': 'inset 0px 4px 4px 0px rgba(255,255,255,0.35), 0 8px 32px rgba(0,0,0,0.08)',
+        brand: ['Geist', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        sans: ['Geist', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       borderRadius: {
         lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 1px)',
+        sm: 'calc(var(--radius) - 2px)',
+        xl: '10px',
+        '2xl': '20px',
       },
     },
   },
