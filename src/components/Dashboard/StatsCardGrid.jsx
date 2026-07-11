@@ -1,18 +1,23 @@
-import { useMemo } from 'react';
-import { DollarSign, Percent, TrendingUp, Activity, BarChart3 } from 'lucide-react';
+import { useMemo } from 'react'
+import { DollarSign, Percent, TrendingUp, Activity, BarChart3 } from 'lucide-react'
+import { Card } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 function MiniStat({ icon: Icon, label, value, tone }) {
   return (
-    <div className="glass-stat">
-      <div className="flex items-center gap-1.5 mb-1">
-        <Icon size={12} className="text-brand-blue" />
-        <span className="glass-stat-label">{label}</span>
+    <Card size="sm" className="px-3 py-2.5 min-w-[120px]">
+      <div className="flex items-center gap-1.5 mb-0.5">
+        <Icon size={12} className="text-primary" />
+        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">{label}</span>
       </div>
-      <span className={`glass-stat-value ${tone === 'up' ? 'text-profit' : tone === 'down' ? 'text-loss' : 'text-text'}`}>
+      <span className={cn(
+        'font-mono text-lg font-semibold tracking-tight',
+        tone === 'up' ? 'text-profit' : tone === 'down' ? 'text-loss' : 'text-foreground',
+      )}>
         {value}
       </span>
-    </div>
-  );
+    </Card>
+  )
 }
 
 export default function StatsCardGrid({ stats }) {
@@ -22,7 +27,7 @@ export default function StatsCardGrid({ stats }) {
     { icon: TrendingUp, label: 'Profit Factor', value: (stats.profitFactor || 0).toFixed(2) },
     { icon: Activity, label: 'Sharpe', value: (stats.sharpe || 0).toFixed(2) },
     { icon: BarChart3, label: 'Sortino', value: (stats.sortino || 0).toFixed(2) },
-  ], [stats]);
+  ], [stats])
 
   return (
     <div className="flex flex-wrap gap-2">
@@ -30,5 +35,5 @@ export default function StatsCardGrid({ stats }) {
         <MiniStat key={item.label} {...item} />
       ))}
     </div>
-  );
+  )
 }

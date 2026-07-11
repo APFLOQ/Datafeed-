@@ -1,20 +1,29 @@
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+
+const ranges = [
+  { value: '1m', label: '1 Month' },
+  { value: '3m', label: '3 Months' },
+  { value: '6m', label: '6 Months' },
+  { value: '1y', label: '1 Year' },
+  { value: 'all', label: 'All Time' },
+]
+
 export default function TopBar({ dateRange, onDateRangeChange }) {
   return (
-    <div className="glass-topbar">
+    <div className="flex items-center justify-between bg-card rounded-xl border px-4 py-2">
       <div className="flex items-center gap-4">
-        <span className="glass-topbar-logo">Datafeed</span>
-        <select
-          value={dateRange}
-          onChange={(e) => onDateRangeChange(e.target.value)}
-          className="glass-select"
-        >
-          <option value="1m">1 Month</option>
-          <option value="3m">3 Months</option>
-          <option value="6m">6 Months</option>
-          <option value="1y">1 Year</option>
-          <option value="all">All Time</option>
-        </select>
+        <span className="font-brand text-lg font-bold tracking-tight">Datafeed</span>
+        <Select value={dateRange} onValueChange={onDateRangeChange}>
+          <SelectTrigger className="w-[130px]">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {ranges.map((r) => (
+              <SelectItem key={r.value} value={r.value}>{r.label}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
     </div>
-  );
+  )
 }
