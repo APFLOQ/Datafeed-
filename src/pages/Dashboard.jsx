@@ -6,6 +6,7 @@ import ChartAreaInteractive from '../components/ChartAreaInteractive'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import CalendarView from '../components/CalendarView'
 import AnalyticsDashboard from '../components/Analytics/AnalyticsDashboard'
 import PreMarketPanel from '../components/PreMarketPanel'
@@ -47,7 +48,7 @@ function SectionWrapper({ children, sectionId, activeSection }) {
   }, [activeSection, sectionId])
 
   if (sectionId !== activeSection) return null
-  return <div ref={ref} className="section-enter">{children}</div>
+  return <div ref={ref} className="section-enter min-w-0">{children}</div>
 }
 
 export default function Dashboard() {
@@ -61,48 +62,39 @@ export default function Dashboard() {
   const sectionTitle = sectionTitles[activeSection] || 'Dashboard'
 
   return (
-    <SidebarProvider
-      style={{ '--sidebar-width': 'calc(var(--spacing) * 72)' }}
-    >
+    <SidebarProvider style={{ '--sidebar-width': 'calc(var(--spacing) * 72)' }}>
       <AppSidebar activeSection={activeSection} onSectionChange={setActiveSection} />
-      <SidebarInset>
-        <SiteHeader
-          dateRange={dateRange}
-          onDateRangeChange={setDateRange}
-          sectionTitle={sectionTitle}
-        />
-        <div className="flex flex-1 flex-col">
-          <div className="@container/main flex flex-1 flex-col gap-2">
-            <div ref={dashboardRef} className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+      <SidebarInset className="min-w-0">
+        <SiteHeader dateRange={dateRange} onDateRangeChange={setDateRange} sectionTitle={sectionTitle} />
+        <div className="flex flex-1 flex-col min-w-0">
+          <div className="@container/main flex flex-1 flex-col gap-2 min-w-0">
+            <div ref={dashboardRef} className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 min-w-0">
               {activeSection === 'dashboard' && (
                 <>
                   <SectionCards stats={stats} />
-                  <div className="px-4 lg:px-6">
+                  <div className="px-4 lg:px-6 min-w-0">
                     <ChartAreaInteractive trades={trades} />
                   </div>
-                  <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2">
-                    <Card>
+                  <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2 min-w-0">
+                    <Card className="min-w-0">
                       <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                        <ArrowLeftRight size={14} className="text-primary" />
-                        <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">
+                        <ArrowLeftRight size={14} className="text-primary shrink-0" />
+                        <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
                           Recent Trades
                         </CardTitle>
                       </CardHeader>
-                      <CardContent>
-                        <DisplayTable
-                          trades={trades.slice(0, 10)}
-                          strategies={strategies}
-                        />
+                      <CardContent className="min-w-0 overflow-x-auto">
+                        <DisplayTable trades={trades.slice(0, 10)} strategies={strategies} />
                       </CardContent>
                     </Card>
-                    <Card>
+                    <Card className="min-w-0">
                       <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                        <Calendar size={14} className="text-primary" />
-                        <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">
+                        <Calendar size={14} className="text-primary shrink-0" />
+                        <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
                           Calendar
                         </CardTitle>
                       </CardHeader>
-                      <CardContent>
+                      <CardContent className="min-w-0 overflow-x-auto">
                         <CalendarView
                           trades={trades}
                           cursor={calCursor}
@@ -117,15 +109,15 @@ export default function Dashboard() {
               )}
 
               <SectionWrapper sectionId="trades" activeSection={activeSection}>
-                <div className="px-4 lg:px-6">
-                  <Card>
+                <div className="px-4 lg:px-6 min-w-0">
+                  <Card className="min-w-0">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <ArrowLeftRight size={14} className="text-primary" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">
+                      <ArrowLeftRight size={14} className="text-primary shrink-0" />
+                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
                         All Trades
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="min-w-0 overflow-x-auto">
                       <DisplayTable trades={trades} strategies={strategies} />
                     </CardContent>
                   </Card>
@@ -133,21 +125,21 @@ export default function Dashboard() {
               </SectionWrapper>
 
               <SectionWrapper sectionId="analytics" activeSection={activeSection}>
-                <div className="px-4 lg:px-6">
+                <div className="px-4 lg:px-6 min-w-0">
                   <AnalyticsDashboard trades={trades} strategies={strategies} premarkets={premarkets} />
                 </div>
               </SectionWrapper>
 
               <SectionWrapper sectionId="calendar" activeSection={activeSection}>
-                <div className="px-4 lg:px-6">
-                  <Card>
+                <div className="px-4 lg:px-6 min-w-0">
+                  <Card className="min-w-0">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <Calendar size={14} className="text-primary" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">
+                      <Calendar size={14} className="text-primary shrink-0" />
+                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
                         Trade Calendar
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="min-w-0 overflow-x-auto">
                       <CalendarView
                         trades={trades}
                         cursor={calCursor}
@@ -161,15 +153,15 @@ export default function Dashboard() {
               </SectionWrapper>
 
               <SectionWrapper sectionId="premarket" activeSection={activeSection}>
-                <div className="px-4 lg:px-6">
-                  <Card>
+                <div className="px-4 lg:px-6 min-w-0">
+                  <Card className="min-w-0">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <Target size={14} className="text-primary" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">
+                      <Target size={14} className="text-primary shrink-0" />
+                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
                         Pre-Market
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="min-w-0">
                       <PreMarketPanel premarkets={premarkets} onEdit={() => {}} onDelete={() => {}} />
                     </CardContent>
                   </Card>
@@ -177,15 +169,15 @@ export default function Dashboard() {
               </SectionWrapper>
 
               <SectionWrapper sectionId="playbook" activeSection={activeSection}>
-                <div className="px-4 lg:px-6">
-                  <Card>
+                <div className="px-4 lg:px-6 min-w-0">
+                  <Card className="min-w-0">
                     <CardHeader className="flex flex-row items-center gap-2 pb-2">
-                      <BookOpen size={14} className="text-primary" />
-                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">
+                      <BookOpen size={14} className="text-primary shrink-0" />
+                      <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
                         Playbook
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="min-w-0">
                       <PlaybookPanel strategies={strategies} onAdd={addStrategy} onDelete={deleteStrategy} />
                     </CardContent>
                   </Card>
@@ -215,44 +207,46 @@ function DisplayTable({ trades, strategies }) {
   }
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Date</TableHead>
-          <TableHead>Symbol</TableHead>
-          <TableHead>Direction</TableHead>
-          <TableHead>Entry</TableHead>
-          <TableHead>Exit</TableHead>
-          <TableHead>Qty</TableHead>
-          <TableHead className="text-right">P&L</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {trades.map((t, i) => {
-          const entry = Number(t.entryPrice) || 0
-          const exit = Number(t.exitPrice) || 0
-          const qty = Number(t.quantity) || 0
-          const dir = t.direction === 'short' ? -1 : 1
-          const pnl = (exit - entry) * qty * dir
-          return (
-            <TableRow key={t.id || i}>
-              <TableCell className="font-medium whitespace-nowrap">{t.date}</TableCell>
-              <TableCell className="truncate max-w-[80px]">{t.symbol}</TableCell>
-              <TableCell>
-                <span className={t.direction === 'long' ? 'text-success' : 'text-destructive'}>
-                  {t.direction}
-                </span>
-              </TableCell>
-              <TableCell className="font-mono whitespace-nowrap">{entry.toFixed(2)}</TableCell>
-              <TableCell className="font-mono whitespace-nowrap">{exit.toFixed(2)}</TableCell>
-              <TableCell className="whitespace-nowrap">{qty}</TableCell>
-              <TableCell className={`text-right font-mono whitespace-nowrap ${pnl >= 0 ? 'text-success' : 'text-destructive'}`}>
-                {pnl >= 0 ? '+' : ''}${pnl.toFixed(2)}
-              </TableCell>
-            </TableRow>
-          )
-        })}
-      </TableBody>
-    </Table>
+    <div className="min-w-0 overflow-x-auto">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="whitespace-nowrap">Date</TableHead>
+            <TableHead className="whitespace-nowrap">Symbol</TableHead>
+            <TableHead className="whitespace-nowrap">Direction</TableHead>
+            <TableHead className="whitespace-nowrap">Entry</TableHead>
+            <TableHead className="whitespace-nowrap">Exit</TableHead>
+            <TableHead className="whitespace-nowrap">Qty</TableHead>
+            <TableHead className="whitespace-nowrap text-right">P&L</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {trades.map((t, i) => {
+            const entry = Number(t.entryPrice) || 0
+            const exit = Number(t.exitPrice) || 0
+            const qty = Number(t.quantity) || 0
+            const dir = t.direction === 'short' ? -1 : 1
+            const pnl = (exit - entry) * qty * dir
+            return (
+              <TableRow key={t.id || i}>
+                <TableCell className="font-medium whitespace-nowrap">{t.date}</TableCell>
+                <TableCell className="truncate max-w-[100px]">{t.symbol}</TableCell>
+                <TableCell className="whitespace-nowrap">
+                  <span className={t.direction === 'long' ? 'text-success' : 'text-destructive'}>
+                    {t.direction}
+                  </span>
+                </TableCell>
+                <TableCell className="font-mono whitespace-nowrap">{entry.toFixed(2)}</TableCell>
+                <TableCell className="font-mono whitespace-nowrap">{exit.toFixed(2)}</TableCell>
+                <TableCell className="whitespace-nowrap">{qty}</TableCell>
+                <TableCell className={`text-right font-mono whitespace-nowrap ${pnl >= 0 ? 'text-success' : 'text-destructive'}`}>
+                  {pnl >= 0 ? '+' : ''}${pnl.toFixed(2)}
+                </TableCell>
+              </TableRow>
+            )
+          })}
+        </TableBody>
+      </Table>
+    </div>
   )
 }

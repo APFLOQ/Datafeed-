@@ -13,18 +13,18 @@ export default function SectionCards({ stats }) {
   ], [stats])
 
   return (
-    <div className="grid auto-rows-min gap-4 md:grid-cols-5 px-4 lg:px-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 px-4 lg:px-6">
       {items.map((item) => (
-        <Card key={item.label} className="@container/card">
-          <CardHeader className="flex flex-row items-center gap-2 pb-2">
-            <item.icon size={14} className="text-primary" />
-            <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">
+        <Card key={item.label} className="@container/card min-w-0">
+          <CardHeader className="flex flex-row items-center gap-2 pb-2 px-3 pt-3">
+            <item.icon size={14} className="text-primary shrink-0" />
+            <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground truncate">
               {item.label}
             </CardTitle>
           </CardHeader>
-          <CardContent className="min-w-0">
+          <CardContent className="px-3 pb-3 min-w-0">
             <span className={cn(
-              'font-mono text-xl font-semibold tracking-tight truncate block',
+              'font-mono text-lg sm:text-xl font-semibold tracking-tight truncate block',
               item.tone === 'up' ? 'text-success' : item.tone === 'down' ? 'text-destructive' : '',
             )}>
               {item.value}
