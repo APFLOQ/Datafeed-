@@ -126,7 +126,7 @@ html {
 .day-trade-row { display: grid; grid-template-columns: 1fr auto auto; align-items: start; gap: 12px; background: var(--muted); border: 1px solid var(--border); border-radius: 3px; padding: 8px 12px; font-size: 13px; }
 
 /* Analytics sections */
-.analytics-section { min-width: 0; overflow: hidden; margin-bottom: 20px; }
+.analytics-section { min-width: 0; margin-bottom: 20px; }
 .analytics-section h4 { font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 400; margin: 0 0 10px; color: var(--foreground); }
 
 /* KPI / metrics */
@@ -164,7 +164,7 @@ html {
 .premarket-row-head { display: flex; justify-content: space-between; align-items: center; min-width: 0; gap: 8px; }
 .premarket-row-head > div:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .premarket-levels { display: flex; gap: 14px; font-size: 12px; color: var(--muted-foreground); flex-wrap: wrap; min-width: 0; }
-.premarket-levels > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.premarket-levels > span { min-width: 0; }
 
 /* Strategy / Playbook */
 .strategy-list { display: flex; flex-direction: column; gap: 8px; max-width: 480px; }
