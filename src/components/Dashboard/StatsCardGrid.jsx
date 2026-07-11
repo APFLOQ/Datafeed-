@@ -3,12 +3,12 @@ import { DollarSign, Percent, TrendingUp, Activity, BarChart3 } from 'lucide-rea
 
 function MiniStat({ icon: Icon, label, value, tone }) {
   return (
-    <div className="mac-stat">
+    <div className="glass-stat">
       <div className="flex items-center gap-1.5 mb-1">
         <Icon size={12} className="text-brand-blue" />
-        <span className="mac-stat-label">{label}</span>
+        <span className="glass-stat-label">{label}</span>
       </div>
-      <span className={`mac-stat-value ${tone === 'up' ? 'text-profit' : tone === 'down' ? 'text-loss' : 'text-text'}`}>
+      <span className={`glass-stat-value ${tone === 'up' ? 'text-profit' : tone === 'down' ? 'text-loss' : 'text-text'}`}>
         {value}
       </span>
     </div>

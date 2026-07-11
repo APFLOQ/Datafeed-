@@ -5,108 +5,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* macOS Background */
-.mac-bg {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 50%, #dde3ed 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.mac-bg::before {
-  content: '';
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(ellipse at 20% 50%, rgba(0,132,255,0.06) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 20%, rgba(96,177,255,0.04) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 80%, rgba(49,154,255,0.03) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* macOS Frosted Glass (Vibrancy) */
-.mac-glass {
-  background: rgba(255,255,255,0.6);
+/* Base glass */
+.glass {
+  background: rgba(255,255,255,0.5);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 0.5px solid rgba(255,255,255,0.8);
+  border: 0.5px solid rgba(255,255,255,0.7);
   box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04),
               0 1px 3px rgba(0,0,0,0.04),
               0 4px 12px rgba(0,0,0,0.04);
+  border-radius: 16px;
 }
 
-.mac-glass-dark {
-  background: rgba(255,255,255,0.4);
+/* Card */
+.glass-card {
+  background: rgba(255,255,255,0.55);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 0.5px solid rgba(255,255,255,0.6);
-  box-shadow: 0 0 0 0.5px rgba(0,0,0,0.03);
-}
-
-/* Traffic Lights */
-.traffic-lights {
-  display: flex;
-  gap: 7px;
-  align-items: center;
-  padding: 2px 0;
-}
-
-.traffic-light {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  transition: all 0.15s ease;
-  position: relative;
-}
-
-.traffic-light::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-
-.traffic-light.red {
-  background: #FE5F57;
-  border: 0.5px solid rgba(0,0,0,0.1);
-}
-.traffic-light.red::after { box-shadow: inset 0 1px 2px rgba(255,255,255,0.3); }
-
-.traffic-light.yellow {
-  background: #FEBC2E;
-  border: 0.5px solid rgba(0,0,0,0.1);
-}
-.traffic-light.yellow::after { box-shadow: inset 0 1px 2px rgba(255,255,255,0.3); }
-
-.traffic-light.green {
-  background: #28C840;
-  border: 0.5px solid rgba(0,0,0,0.1);
-}
-.traffic-light.green::after { box-shadow: inset 0 1px 2px rgba(255,255,255,0.3); }
-
-.traffic-lights:hover .traffic-light::after {
-  opacity: 1;
-}
-
-.traffic-lights:hover .traffic-light.red { background: #FE5F57; }
-.traffic-lights:hover .traffic-light.yellow { background: #FEBC2E; }
-.traffic-lights:hover .traffic-light.green { background: #28C840; }
-
-.traffic-light.red:hover { transform: scale(1.15); }
-.traffic-light.yellow:hover { transform: scale(1.15); }
-.traffic-light.green:hover { transform: scale(1.15); }
-
-/* macOS Window Card */
-.mac-window {
-  background: rgba(255,255,255,0.65);
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 0.5px solid rgba(255,255,255,0.8);
-  border-radius: 12px;
+  border: 0.5px solid rgba(255,255,255,0.7);
+  border-radius: 16px;
   box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04),
               0 1px 3px rgba(0,0,0,0.04),
               0 4px 12px rgba(0,0,0,0.04),
@@ -115,7 +32,7 @@
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.mac-window:hover {
+.glass-card:hover {
   box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04),
               0 1px 3px rgba(0,0,0,0.04),
               0 4px 12px rgba(0,0,0,0.04),
@@ -124,50 +41,47 @@
   transform: translateY(-1px);
 }
 
-.mac-window-header {
+.glass-card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px 8px;
-  border-bottom: 0.5px solid rgba(0,0,0,0.04);
+  gap: 10px;
+  padding: 14px 18px 0;
 }
 
-.mac-window-title {
-  font-size: 12px;
+.glass-card-body {
+  padding: 12px 18px 18px;
+}
+
+.glass-card-title {
+  font-size: 13px;
   font-weight: 600;
-  color: rgba(0,0,0,0.55);
-  letter-spacing: 0.3px;
+  color: rgba(0,0,0,0.5);
+  letter-spacing: 0.2px;
   text-transform: uppercase;
-  font-family: 'Inter', sans-serif;
 }
 
-.mac-window-body {
-  padding: 8px 16px 16px;
-}
-
-/* macOS Dock */
-.mac-dock {
+/* Sidebar style */
+.glass-sidebar {
   display: flex;
   flex-direction: column;
   gap: 2px;
   padding: 8px;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.45);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 0.5px solid rgba(255,255,255,0.6);
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow: 0 0 0 0.5px rgba(0,0,0,0.04),
-              0 4px 12px rgba(0,0,0,0.06),
-              0 12px 32px rgba(0,0,0,0.06);
+              0 4px 12px rgba(0,0,0,0.06);
 }
 
-.mac-dock-item {
+.glass-sidebar-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   padding: 8px 10px;
   border-radius: 8px;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s ease;
   cursor: pointer;
   color: rgba(0,0,0,0.5);
   font-size: 13px;
@@ -178,113 +92,47 @@
   text-align: left;
 }
 
-.mac-dock-item:hover {
+.glass-sidebar-item:hover {
   background: rgba(0,0,0,0.04);
   color: rgba(0,0,0,0.8);
-  transform: scale(1.05);
 }
 
-.mac-dock-item.active {
+.glass-sidebar-item.active {
   background: rgba(0,132,255,0.1);
   color: #0084FF;
+  font-weight: 600;
 }
 
-.mac-dock-item.active::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #0084FF;
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-}
-
-.mac-dock-item-icon {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* macOS Menu Bar */
-.mac-menubar {
-  background: rgba(255,255,255,0.55);
+/* Top bar */
+.glass-topbar {
+  background: rgba(255,255,255,0.45);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 0.5px solid rgba(255,255,255,0.6);
-  border-radius: 10px;
+  border-radius: 14px;
   box-shadow: 0 0 0 0.5px rgba(0,0,0,0.03),
               0 1px 3px rgba(0,0,0,0.03),
               0 4px 12px rgba(0,0,0,0.04);
-  padding: 6px 16px;
+  padding: 8px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.mac-menubar-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.mac-menubar-apple {
-  font-size: 16px;
+.glass-topbar-logo {
+  font-size: 18px;
   font-weight: 700;
   color: rgba(0,0,0,0.85);
   font-family: 'Fustat', sans-serif;
   letter-spacing: -0.5px;
 }
 
-.mac-menubar-item {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.6);
-  padding: 2px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.15s ease;
-  border: none;
-  background: transparent;
-}
-
-.mac-menubar-item:hover {
-  background: rgba(0,0,0,0.05);
-  color: rgba(0,0,0,0.85);
-}
-
-/* macOS Menu Bar Right */
-.mac-menubar-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.mac-menubar-time {
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.55);
-  font-variant-numeric: tabular-nums;
-}
-
-.mac-menubar-status {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #28C840;
-  box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
-}
-
-/* macOS Select */
-.mac-select {
+/* Select */
+.glass-select {
   background: rgba(0,0,0,0.04);
   border: 0.5px solid rgba(0,0,0,0.08);
-  border-radius: 6px;
-  padding: 4px 10px;
+  border-radius: 8px;
+  padding: 5px 10px;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0,0,0,0.6);
@@ -294,33 +142,33 @@
   transition: background 0.15s ease;
 }
 
-.mac-select:hover {
+.glass-select:hover {
   background: rgba(0,0,0,0.07);
 }
 
-.mac-select:focus {
+.glass-select:focus {
   border-color: #0084FF;
   box-shadow: 0 0 0 2px rgba(0,132,255,0.2);
 }
 
-/* macOS Stat Card (mini) */
-.mac-stat {
-  background: rgba(255,255,255,0.5);
+/* Mini stat */
+.glass-stat {
+  background: rgba(255,255,255,0.45);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 0.5px solid rgba(255,255,255,0.6);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 12px 16px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-width: 120px;
 }
 
-.mac-stat:hover {
+.glass-stat:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-.mac-stat-label {
+.glass-stat-label {
   font-size: 11px;
   font-weight: 500;
   color: rgba(0,0,0,0.4);
@@ -329,7 +177,7 @@
   margin-bottom: 4px;
 }
 
-.mac-stat-value {
+.glass-stat-value {
   font-size: 20px;
   font-weight: 600;
   font-family: 'IBM Plex Mono', monospace;
@@ -338,10 +186,10 @@
 
 /* Section transitions */
 .section-enter {
-  animation: macSectionEnter 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: sectionEnter 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-@keyframes macSectionEnter {
+@keyframes sectionEnter {
   from {
     opacity: 0;
     transform: scale(0.96) translateY(8px);
@@ -350,33 +198,6 @@
     opacity: 1;
     transform: scale(1) translateY(0);
   }
-}
-
-/* macOS Tooltip */
-.mac-tooltip {
-  background: rgba(30,30,30,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 0.5px solid rgba(255,255,255,0.1);
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 12px;
-  color: white;
-}
-
-/* Scrollbar macOS style */
-.mac-scroll::-webkit-scrollbar {
-  width: 6px;
-}
-.mac-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.mac-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.15);
-  border-radius: 3px;
-}
-.mac-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.25);
 }
 
 .card-entrance {

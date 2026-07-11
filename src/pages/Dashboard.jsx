@@ -11,7 +11,7 @@ import PreMarketPanel from '../components/PreMarketPanel';
 import PlaybookPanel from '../components/PlaybookPanel';
 import { useJournal } from '../hooks/useJournal';
 import { useCardEntrance } from '../hooks/useAnimations';
-import { ArrowLeftRight, Calendar, BarChart3, Target, BookOpen } from 'lucide-react';
+import { ArrowLeftRight, Calendar, Target, BookOpen } from 'lucide-react';
 import { $ as anime } from 'animejs';
 
 function SectionWrapper({ children, sectionId, activeSection }) {
@@ -24,7 +24,6 @@ function SectionWrapper({ children, sectionId, activeSection }) {
       const el = ref.current;
       if (el) {
         el.style.opacity = '0';
-        el.style.transform = 'scale(0.96) translateY(8px)';
         anime({
           targets: el,
           opacity: [0, 1],
@@ -39,15 +38,11 @@ function SectionWrapper({ children, sectionId, activeSection }) {
 
   if (sectionId !== activeSection) return null;
 
-  return (
-    <div ref={ref} className="lg:col-span-3 section-enter">
-      {children}
-    </div>
-  );
+  return <div ref={ref} className="lg:col-span-3 section-enter">{children}</div>;
 }
 
 export default function Dashboard() {
-  const { trades, strategies, premarkets, stats, saveTrade, deleteTrade, addStrategy, deleteStrategy, savePremarket, deletePremarket } = useJournal();
+  const { trades, strategies, premarkets, stats, addStrategy, deleteStrategy } = useJournal();
   const [activeSection, setActiveSection] = useState('dashboard');
   const [dateRange, setDateRange] = useState('all');
   const [calCursor, setCalCursor] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() });
@@ -55,10 +50,10 @@ export default function Dashboard() {
   useCardEntrance(dashboardRef);
 
   return (
-    <div className="min-h-screen mac-bg p-4 flex gap-4" style={{ minHeight: '100vh' }}>
+    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] to-[#e4e9f2] p-4 flex gap-3">
       <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
 
-      <div className="flex-1 flex flex-col gap-3 min-w-0" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="flex-1 flex flex-col gap-3 min-w-0">
         <TopBar dateRange={dateRange} onDateRangeChange={setDateRange} />
 
         <div ref={dashboardRef} className="grid grid-cols-1 lg:grid-cols-3 gap-3 auto-rows-min">

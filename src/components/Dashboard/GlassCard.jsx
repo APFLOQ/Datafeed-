@@ -1,16 +1,16 @@
+import { ArrowRight } from 'lucide-react';
+
 export default function GlassCard({ title, icon: Icon, children, className = '', cols = 1 }) {
   return (
-    <div className={`mac-window ${className} glass-card`}
+    <div className={`glass-card ${className}`}
       style={cols > 1 ? { gridColumn: `span ${cols}` } : undefined}>
-      <div className="mac-window-header">
-        <div className="traffic-lights">
-          <div className="traffic-light red" />
-          <div className="traffic-light yellow" />
-          <div className="traffic-light green" />
+      {(title || Icon) && (
+        <div className="glass-card-header">
+          {Icon && <Icon size={15} className="text-brand-blue" />}
+          {title && <span className="glass-card-title">{title}</span>}
         </div>
-        {title && <span className="mac-window-title">{title}</span>}
-      </div>
-      <div className="mac-window-body">
+      )}
+      <div className="glass-card-body">
         {children}
       </div>
     </div>
