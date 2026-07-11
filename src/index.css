@@ -1,7 +1,8 @@
+@import './styles/glass.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './styles/glass.css';
 
 :root {
   --bg: #12161D;

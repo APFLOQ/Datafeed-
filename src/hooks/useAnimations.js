@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import anime from 'animejs';
+import { $ as anime, stagger, set } from 'animejs';
 
 export function useCardEntrance(ref) {
   useEffect(() => {
@@ -10,7 +10,7 @@ export function useCardEntrance(ref) {
       targets: cards,
       opacity: [0, 1],
       translateY: [20, 0],
-      delay: anime.stagger(80),
+      delay: stagger(80),
       duration: 600,
       easing: 'easeOutCubic',
     });
@@ -30,7 +30,7 @@ export function useScrollReveal(ref) {
               targets,
               opacity: [0, 1],
               translateY: [30, 0],
-              delay: anime.stagger(100),
+              delay: stagger(100),
               duration: 500,
               easing: 'easeOutCubic',
             });
@@ -57,7 +57,7 @@ export function useStaggerText(ref) {
       targets: ref.current.querySelectorAll('.char'),
       opacity: [0, 1],
       translateY: [20, 0],
-      delay: anime.stagger(30),
+      delay: stagger(30),
       duration: 500,
       easing: 'easeOutCubic',
     });
