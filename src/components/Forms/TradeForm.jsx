@@ -7,7 +7,7 @@ import {
   DAY_TYPES, ASSET_TYPES, CONTRACT_SIZES, SHOT_STAGES,
   BIAS_LABEL, EXPECTED_TRIGGER_LABEL,
 } from '../../utils/constants';
-import ShotSlot from '../UI/ShotSlot';
+import ShotSlot from '../ui/ShotSlot';
 
 export const emptyForm = () => ({
   id: null, date: new Date().toISOString().slice(0, 10), symbol: '', direction: 'long',

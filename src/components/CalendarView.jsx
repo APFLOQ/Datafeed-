@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { getMonthCells, calcPnL } from '../utils/calculations';
 import { dateKey, fmtMoney } from '../utils/formatters';
 import { MONTH_NAMES, WEEKDAYS } from '../utils/constants';
-import StatCard from './UI/StatCard';
+import StatCard from './ui/StatCard';
 
 export default function CalendarView({ trades, cursor, setCursor, onSelectDay, monthTotal }) {
   const monthKey = `${cursor.year}-${String(cursor.month + 1).padStart(2, '0')}`;

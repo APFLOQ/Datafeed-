@@ -1,7 +1,7 @@
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import { fmtPct, fmtRatio, fmtMoney } from '../../utils/formatters';
 import { OVERNIGHT_INVENTORY } from '../../utils/constants';
-import StatCard from '../UI/StatCard';
+import StatCard from '../ui/StatCard';
 
 export default function CruzadosTab({ crossStats, stats }) {
   const catalystData = [

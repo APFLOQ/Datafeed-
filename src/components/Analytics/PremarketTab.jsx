@@ -1,5 +1,5 @@
 import { fmtPct, fmtRatio, fmtMoney } from '../../utils/formatters';
-import StatCard from '../UI/StatCard';
+import StatCard from '../ui/StatCard';
 
 function describeArc(cx, cy, r, startAngle, endAngle) {
   const startRad = ((startAngle - 90) * Math.PI) / 180;

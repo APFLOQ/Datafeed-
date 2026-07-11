@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
 import { fmtPct, fmtRatio, fmtMoney } from '../../utils/formatters';
 import { calcPnL, computeTradeDiagnostics } from '../../utils/calculations';
-import StatCard from '../UI/StatCard';
+import StatCard from '../ui/StatCard';
 
 export default function CuantitativoTab({ quantStats, trades }) {
   const rMultipleData = useMemo(() => {

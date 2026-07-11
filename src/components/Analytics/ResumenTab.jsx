@@ -1,6 +1,6 @@
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, Cell, Treemap } from 'recharts';
 import { fmtMoney, fmtPct, fmtRatio } from '../../utils/formatters';
-import StatCard from '../UI/StatCard';
+import StatCard from '../ui/StatCard';
 
 export default function ResumenTab({ stats, equityCurve, byStrategy, byEmotion }) {
   return (

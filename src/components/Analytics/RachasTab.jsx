@@ -1,6 +1,6 @@
 import { fmtPct, fmtRatio, fmtDateShort } from '../../utils/formatters';
 import { calcPnL } from '../../utils/calculations';
-import StatCard from '../UI/StatCard';
+import StatCard from '../ui/StatCard';
 
 export default function RachasTab({ revengeEvents, overconfidenceEvents, sessionStats, trades, sortedForSequence }) {
   return (

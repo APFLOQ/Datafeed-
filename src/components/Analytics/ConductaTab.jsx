@@ -1,7 +1,7 @@
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts';
 import { fmtPct, fmtRatio } from '../../utils/formatters';
 import { fmtDateShort } from '../../utils/formatters';
-import StatCard from '../UI/StatCard';
+import StatCard from '../ui/StatCard';
 
 export default function ConductaTab({ behaviorStats }) {
   const effData = [
