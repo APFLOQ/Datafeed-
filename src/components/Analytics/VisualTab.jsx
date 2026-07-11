@@ -21,9 +21,9 @@ export default function VisualTab({ candidates, filterTag, setFilterTag }) {
           <p>Sube capturas de "Trigger" en tus trades para poder auditarlas visualmente aquí.</p>
         </div>
       ) : (
-        <div style={{ columnCount: 3, columnGap: 12 }}>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {candidates.map(({ t, tags }, i) => (
-            <div key={i} style={{ breakInside: 'avoid', marginBottom: 12 }}
+            <div key={i}
               className="bg-[#1A2029] border border-[#2B3242] rounded-lg overflow-hidden cursor-zoom-in"
               onClick={() => setLightbox(t.shots.trigger.img)}>
               <img src={t.shots.trigger.img} alt="" className="w-full block" />

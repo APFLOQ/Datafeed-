@@ -57,6 +57,8 @@ html {
 @layer base {
   * {
     @apply border-border;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   body {
     @apply bg-background text-foreground;
@@ -123,10 +125,14 @@ html {
 .day-trade-list { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
 .day-trade-row { display: grid; grid-template-columns: 1fr auto auto; align-items: start; gap: 12px; background: var(--muted); border: 1px solid var(--border); border-radius: 3px; padding: 8px 12px; font-size: 13px; }
 
+/* Analytics sections */
+.analytics-section { min-width: 0; overflow: hidden; margin-bottom: 20px; }
+.analytics-section h4 { font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 400; margin: 0 0 10px; color: var(--foreground); }
+
 /* KPI / metrics */
-.kpi-note { font-size: 12px; color: var(--muted-foreground); background: var(--muted); border: 1px solid var(--border); border-radius: 3px; padding: 10px 12px; margin: 10px 0; line-height: 1.6; }
-.metric-table { width: 100%; border-collapse: collapse; }
-.metric-table td { padding: 8px 6px; font-size: 12.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.kpi-note { font-size: 12px; color: var(--muted-foreground); background: var(--muted); border: 1px solid var(--border); border-radius: 3px; padding: 10px 12px; margin: 10px 0; line-height: 1.6; overflow-wrap: break-word; word-break: break-word; }
+.metric-table, .strat-table { width: 100%; border-collapse: collapse; min-width: 0; }
+.metric-table td, .strat-table td { padding: 8px 6px; font-size: 12.5px; border-bottom: 1px solid var(--border); vertical-align: top; overflow-wrap: break-word; word-break: break-word; }
 .metric-table td:first-child { color: var(--muted-foreground); width: 42%; }
 
 /* Subtabs */
@@ -158,6 +164,7 @@ html {
 .premarket-row-head { display: flex; justify-content: space-between; align-items: center; min-width: 0; gap: 8px; }
 .premarket-row-head > div:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .premarket-levels { display: flex; gap: 14px; font-size: 12px; color: var(--muted-foreground); flex-wrap: wrap; min-width: 0; }
+.premarket-levels > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 
 /* Strategy / Playbook */
 .strategy-list { display: flex; flex-direction: column; gap: 8px; max-width: 480px; }
@@ -165,8 +172,6 @@ html {
 .swatch { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
 .add-strategy-row { display: flex; gap: 8px; margin-top: 14px; max-width: 480px; }
 .add-strategy-row input { flex: 1; background: var(--input); border: 1px solid var(--border); border-radius: 3px; padding: 8px 10px; color: var(--foreground); font-family: 'Geist', sans-serif; }
-.strat-table { width: 100%; }
-.strat-table td { padding: 7px 4px; font-size: 13px; border-bottom: 1px solid var(--border); }
 
 /* Select tag */
 .select-tag { background: var(--input); border: 1px solid var(--border); border-radius: 3px; padding: 7px 10px; color: var(--foreground); font-family: 'Geist', sans-serif; font-size: 12.5px; margin-bottom: 14px; }
