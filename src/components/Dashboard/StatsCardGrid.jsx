@@ -3,12 +3,12 @@ import { DollarSign, Percent, TrendingUp, Activity, BarChart3 } from 'lucide-rea
 
 function MiniStat({ icon: Icon, label, value, tone }) {
   return (
-    <div className="glass rounded-[16px] p-4 flex flex-col gap-1 min-w-[130px]">
-      <div className="flex items-center gap-2 text-text-dim text-xs">
-        <Icon size={14} className="text-brand-blue" />
-        {label}
+    <div className="mac-stat">
+      <div className="flex items-center gap-1.5 mb-1">
+        <Icon size={12} className="text-brand-blue" />
+        <span className="mac-stat-label">{label}</span>
       </div>
-      <span className={`font-mono text-lg font-semibold ${tone === 'up' ? 'text-profit' : tone === 'down' ? 'text-loss' : 'text-text'}`}>
+      <span className={`mac-stat-value ${tone === 'up' ? 'text-profit' : tone === 'down' ? 'text-loss' : 'text-text'}`}>
         {value}
       </span>
     </div>
@@ -25,7 +25,7 @@ export default function StatsCardGrid({ stats }) {
   ], [stats]);
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-2">
       {items.map((item) => (
         <MiniStat key={item.label} {...item} />
       ))}

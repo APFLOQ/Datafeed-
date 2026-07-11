@@ -1,14 +1,18 @@
 export default function GlassCard({ title, icon: Icon, children, className = '', cols = 1 }) {
   return (
-    <div className={`glass rounded-[20px] p-6 ${className} glass-card`}
+    <div className={`mac-window ${className} glass-card`}
       style={cols > 1 ? { gridColumn: `span ${cols}` } : undefined}>
-      {(title || Icon) && (
-        <div className="flex items-center gap-2 mb-5">
-          {Icon && <Icon size={18} className="text-brand-blue" />}
-          {title && <h3 className="font-semibold text-text text-base">{title}</h3>}
+      <div className="mac-window-header">
+        <div className="traffic-lights">
+          <div className="traffic-light red" />
+          <div className="traffic-light yellow" />
+          <div className="traffic-light green" />
         </div>
-      )}
-      {children}
+        {title && <span className="mac-window-title">{title}</span>}
+      </div>
+      <div className="mac-window-body">
+        {children}
+      </div>
     </div>
   );
 }
