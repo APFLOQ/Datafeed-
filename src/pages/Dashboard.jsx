@@ -14,9 +14,10 @@ import { useCardEntrance } from '../hooks/useAnimations';
 import { ArrowLeftRight, Calendar, BarChart3, Target, BookOpen } from 'lucide-react';
 
 export default function Dashboard() {
-  const { trades, strategies, premarkets, stats, ...journal } = useJournal();
+  const { trades, strategies, premarkets, stats, saveTrade, deleteTrade, addStrategy, deleteStrategy, savePremarket, deletePremarket } = useJournal();
   const [activeSection, setActiveSection] = useState('dashboard');
   const [dateRange, setDateRange] = useState('all');
+  const [calCursor, setCalCursor] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() });
   const dashboardRef = useRef(null);
   useCardEntrance(dashboardRef);
 
@@ -35,16 +36,21 @@ export default function Dashboard() {
                 <StatsCardGrid stats={stats} />
               </div>
               <GlassCard title="Recent Trades" icon={ArrowLeftRight}>
-                <TradeTable trades={trades.slice(0, 10)} onSelectTrade={() => {}} />
+                <TradeTable
+                  trades={trades.slice(0, 10)}
+                  strategies={strategies}
+                  onView={() => {}}
+                  onEdit={() => {}}
+                  onDelete={() => {}}
+                />
               </GlassCard>
               <GlassCard title="Calendar" icon={Calendar} cols={2}>
                 <CalendarView
                   trades={trades}
-                  onDayClick={() => {}}
-                  month={new Date().getMonth()}
-                  year={new Date().getFullYear()}
-                  onPrevMonth={() => {}}
-                  onNextMonth={() => {}}
+                  cursor={calCursor}
+                  setCursor={setCalCursor}
+                  onSelectDay={() => {}}
+                  monthTotal={stats.totalPnL}
                 />
               </GlassCard>
             </>
@@ -53,14 +59,20 @@ export default function Dashboard() {
           {activeSection === 'trades' && (
             <div className="lg:col-span-3">
               <GlassCard title="All Trades" icon={ArrowLeftRight}>
-                <TradeTable trades={trades} onSelectTrade={() => {}} />
+                <TradeTable
+                  trades={trades}
+                  strategies={strategies}
+                  onView={() => {}}
+                  onEdit={() => {}}
+                  onDelete={() => {}}
+                />
               </GlassCard>
             </div>
           )}
 
           {activeSection === 'analytics' && (
             <div className="lg:col-span-3">
-              <AnalyticsDashboard trades={trades} stats={stats} {...journal} />
+              <AnalyticsDashboard trades={trades} strategies={strategies} premarkets={premarkets} />
             </div>
           )}
 
@@ -68,24 +80,23 @@ export default function Dashboard() {
             <GlassCard title="Trade Calendar" icon={Calendar} cols={2}>
               <CalendarView
                 trades={trades}
-                onDayClick={() => {}}
-                month={new Date().getMonth()}
-                year={new Date().getFullYear()}
-                onPrevMonth={() => {}}
-                onNextMonth={() => {}}
+                cursor={calCursor}
+                setCursor={setCalCursor}
+                onSelectDay={() => {}}
+                monthTotal={stats.totalPnL}
               />
             </GlassCard>
           )}
 
           {activeSection === 'premarket' && (
             <GlassCard title="Pre-Market" icon={Target}>
-              <PreMarketPanel premarkets={premarkets} onAdd={() => {}} />
+              <PreMarketPanel premarkets={premarkets} onEdit={() => {}} onDelete={() => {}} />
             </GlassCard>
           )}
 
           {activeSection === 'playbook' && (
             <GlassCard title="Playbook" icon={BookOpen}>
-              <PlaybookPanel strategies={strategies} onAdd={() => {}} />
+              <PlaybookPanel strategies={strategies} onAdd={addStrategy} onDelete={deleteStrategy} />
             </GlassCard>
           )}
         </div>
