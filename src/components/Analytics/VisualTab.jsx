@@ -24,7 +24,7 @@ export default function VisualTab({ candidates, filterTag, setFilterTag }) {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {candidates.map(({ t, tags }, i) => (
             <div key={i}
-              className="bg-[#1A2029] border border-[#2B3242] rounded-lg overflow-hidden cursor-zoom-in"
+              className="bg-[#1d1a18] border border-[#3d3a39] rounded-lg overflow-hidden cursor-zoom-in"
               onClick={() => setLightbox(t.shots.trigger.img)}>
               <img src={t.shots.trigger.img} alt="" className="w-full block" />
               <div className="p-1.5 text-[10.5px] text-text-dim flex flex-wrap gap-1">

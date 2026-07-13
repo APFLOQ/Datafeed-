@@ -43,12 +43,12 @@ export default function CuantitativoTab({ quantStats, trades }) {
           <h4>Distribución de R Múltiple Realizado</h4>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={rMultipleData}>
-              <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
-              <XAxis dataKey="name" stroke="#5B6478" fontSize={10} tick={{ fill: '#5B6478' }} interval={Math.max(1, Math.floor(rMultipleData.length / 15))} />
-              <YAxis stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-              <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8 }} />
+              <CartesianGrid stroke="#3d3a39" strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="#8a8380" fontSize={10} tick={{ fill: '#8a8380' }} interval={Math.max(1, Math.floor(rMultipleData.length / 15))} />
+              <YAxis stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+              <Tooltip contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3 }} />
               <Bar dataKey="count" radius={[2, 2, 0, 0]}>
-                {rMultipleData.map((entry, i) => <Cell key={i} fill={entry.negative ? '#E0685A' : '#4FAE7C'} />)}
+                {rMultipleData.map((entry, i) => <Cell key={i} fill={entry.negative ? '#ef4444' : '#a0ca92'} />)}
               </Bar>
             </BarChart>
           </ResponsiveContainer>

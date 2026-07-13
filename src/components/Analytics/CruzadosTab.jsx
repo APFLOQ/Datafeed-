@@ -26,11 +26,11 @@ export default function CruzadosTab({ crossStats, stats }) {
           <h4>Rendimiento por Catalizador</h4>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={catalystData}>
-              <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
-              <XAxis dataKey="name" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-              <YAxis stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-              <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8 }} />
-              <Bar dataKey="PF" radius={[4, 4, 0, 0]} fill="#D8A657" />
+              <CartesianGrid stroke="#3d3a39" strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+              <YAxis stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+              <Tooltip contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3 }} />
+              <Bar dataKey="PF" radius={[4, 4, 0, 0]} fill="#ee6018" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -40,11 +40,11 @@ export default function CruzadosTab({ crossStats, stats }) {
           <h4>Radar de Métricas</h4>
           <ResponsiveContainer width="100%" height={250}>
             <RadarChart data={radarData}>
-              <PolarGrid stroke="#2B3242" />
+              <PolarGrid stroke="#3d3a39" />
               <PolarAngleAxis dataKey="metric" stroke="#8991A3" fontSize={11} tick={{ fill: '#8991A3' }} />
-              <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#5B6478" fontSize={10} tick={{ fill: '#5B6478' }} />
-              <Radar name="Score" dataKey="value" stroke="#D8A657" fill="#D8A657" fillOpacity={0.2} strokeWidth={2} />
-              <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8 }} />
+              <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#8a8380" fontSize={10} tick={{ fill: '#8a8380' }} />
+              <Radar name="Score" dataKey="value" stroke="#ee6018" fill="#ee6018" fillOpacity={0.2} strokeWidth={2} />
+              <Tooltip contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3 }} />
             </RadarChart>
           </ResponsiveContainer>
         </div>

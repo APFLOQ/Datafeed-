@@ -175,7 +175,7 @@ export default function AnalyticsDashboard({ trades, strategies, premarkets }) {
   }, [trades]);
 
   const fidelityStats = useMemo(() => {
-    const matched = trades.map((t) => ({ t, pm: premarkets.find((p) => p.date === t.date && p.ticker.toUpperCase() === t.symbol.toUpperCase()) })).filter((x) => x.pm && x.pm.bias);
+    const matched = trades.map((t) => ({ t, pm: premarkets.find((p) => p.date === t.date && (p.ticker || '').toUpperCase() === (t.symbol || '').toUpperCase()) })).filter((x) => x.pm && x.pm.bias);
     if (!matched.length) return null;
     const aligned = matched.filter(({ t, pm }) => pm.bias === 'neutral' || (pm.bias === 'long' && t.direction === 'long') || (pm.bias === 'short' && t.direction === 'short'));
     const fidelityPct = (aligned.length / matched.length) * 100;

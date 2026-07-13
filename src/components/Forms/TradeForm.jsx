@@ -32,7 +32,7 @@ export default function TradeForm({ initial, strategies, premarkets, onSave, onC
 
   const matchedPremarket = useMemo(() => {
     if (!form.symbol || !form.date) return null;
-    return premarkets.find((p) => p.date === form.date && p.ticker.trim().toUpperCase() === form.symbol.trim().toUpperCase());
+    return premarkets.find((p) => p.date === form.date && (p.ticker || '').trim().toUpperCase() === form.symbol.trim().toUpperCase());
   }, [premarkets, form.symbol, form.date]);
 
   const submit = () => {

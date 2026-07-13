@@ -31,10 +31,10 @@ export default function PremarketTab({ fidelityStats }) {
       </div>
       <div className="flex justify-center my-4">
         <svg width="200" height="120" viewBox="0 0 200 120">
-          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#2B3242" strokeWidth="12" strokeLinecap="round" />
+          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#3d3a39" strokeWidth="12" strokeLinecap="round" />
           <path d={describeArc(100, 100, 80, 180, 180 + (180 * Math.min(pct, 100)) / 100)}
-            fill="none" stroke={pct >= 60 ? '#4FAE7C' : '#E0685A'} strokeWidth="12" strokeLinecap="round" />
-          <text x="100" y="95" textAnchor="middle" fill="#E7E9EE" fontSize="24" fontFamily="IBM Plex Mono" fontWeight="600">
+            fill="none" stroke={pct >= 60 ? '#a0ca92' : '#ef4444'} strokeWidth="12" strokeLinecap="round" />
+          <text x="100" y="95" textAnchor="middle" fill="#eeeeee" fontSize="24" fontFamily="Geist Mono" fontWeight="400">
             {fmtPct(pct)}
           </text>
           <text x="100" y="118" textAnchor="middle" fill="#8991A3" fontSize="10">Fidelidad al Plan</text>

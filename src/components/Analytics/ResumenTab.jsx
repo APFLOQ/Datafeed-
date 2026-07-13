@@ -17,11 +17,11 @@ export default function ResumenTab({ stats, equityCurve, byStrategy, byEmotion }
         <h4>Equity curve</h4>
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={equityCurve}>
-            <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
-            <XAxis dataKey="date" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-            <YAxis stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-            <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8, fontSize: 12 }} />
-            <Line type="monotone" dataKey="equity" stroke="#D8A657" strokeWidth={2} dot={false} />
+            <CartesianGrid stroke="#3d3a39" strokeDasharray="3 3" />
+            <XAxis dataKey="date" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+            <YAxis stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+            <Tooltip contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3, fontSize: 12 }} />
+            <Line type="monotone" dataKey="equity" stroke="#ee6018" strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -34,8 +34,8 @@ export default function ResumenTab({ stats, equityCurve, byStrategy, byEmotion }
                 data={byStrategy.filter((s) => s.count > 0)}
                 dataKey="pnl"
                 nameKey="name"
-                stroke="#2B3242"
-                fill="#D8A657"
+                stroke="#3d3a39"
+                fill="#ee6018"
                 content={({ depth, x, y, width, height, index, payload, colors, name }) => {
                   if (!payload) return null;
                   const pnl = payload.pnl || 0;
@@ -43,10 +43,10 @@ export default function ResumenTab({ stats, equityCurve, byStrategy, byEmotion }
                     <g>
                       <rect x={x} y={y} width={width} height={height}
                         fill={pnl >= 0 ? `rgba(79,174,124,${0.3 + 0.5 * Math.min(1, pnl / 5000)})` : `rgba(224,104,90,${0.3 + 0.5 * Math.min(1, Math.abs(pnl) / 5000)})`}
-                        stroke="#2B3242" rx={4}
+                        stroke="#3d3a39" rx={2}
                       />
                       {width > 50 && height > 30 && (
-                        <text x={x + width / 2} y={y + height / 2} textAnchor="middle" fill="#E7E9EE" fontSize={11} fontFamily="IBM Plex Sans">
+                        <text x={x + width / 2} y={y + height / 2} textAnchor="middle" fill="#eeeeee" fontSize={11} fontFamily="Geist">
                           {payload.name}
                         </text>
                       )}
@@ -58,12 +58,12 @@ export default function ResumenTab({ stats, equityCurve, byStrategy, byEmotion }
           ) : (
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={byStrategy.filter((s) => s.count > 0)}>
-                <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
-                <XAxis dataKey="name" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-                <YAxis stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-                <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8, fontSize: 12 }} />
+                <CartesianGrid stroke="#3d3a39" strokeDasharray="3 3" />
+                <XAxis dataKey="name" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+                <YAxis stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+                <Tooltip contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3, fontSize: 12 }} />
                 <Bar dataKey="pnl" radius={[4, 4, 0, 0]}>
-                  {byStrategy.filter((s) => s.count > 0).map((s, i) => <Cell key={i} fill={s.pnl >= 0 ? '#4FAE7C' : '#E0685A'} />)}
+                  {byStrategy.filter((s) => s.count > 0).map((s, i) => <Cell key={i} fill={s.pnl >= 0 ? '#a0ca92' : '#ef4444'} />)}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>

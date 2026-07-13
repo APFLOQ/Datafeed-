@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { uid } from '../utils/formatters';
 import { DEFAULT_STRATEGIES, STRATEGY_COLORS } from '../utils/constants';
+import { sharpePoints, sortinoPoints } from '../utils/calculations';
 
 export function useJournal() {
   const [trades, setTrades] = useState([]);
@@ -100,7 +101,16 @@ export function useJournal() {
     }, 0) / losses.length : 0;
     const winRate = (wins.length / total) * 100;
     const profitFactor = avgLoss > 0 ? (avgWin * wins.length) / (avgLoss * losses.length) : avgWin > 0 ? Infinity : 0;
-    return { count: total, totalPnL, winRate, profitFactor, avgWin, avgLoss, sharpe: 0, sortino: 0 };
+    const pnls = trades.map((t) => {
+      const entry = Number(t.entryPrice || t.entry_price);
+      const exit = Number(t.exitPrice || t.exit_price);
+      const qty = Number(t.quantity);
+      const dir = t.direction === 'short' ? -1 : 1;
+      return (exit - entry) * qty * dir;
+    });
+    const sharpe = sharpePoints(pnls) ?? 0;
+    const sortino = sortinoPoints(pnls) ?? 0;
+    return { count: total, totalPnL, winRate, profitFactor, avgWin, avgLoss, sharpe, sortino };
   }
 
   return {

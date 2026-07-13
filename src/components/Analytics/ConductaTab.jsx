@@ -5,10 +5,10 @@ import StatCard from '../ui/StatCard';
 
 export default function ConductaTab({ behaviorStats }) {
   const effData = [
-    { name: 'Miedo / Titubeo', value: behaviorStats.effGroups.fear, color: '#E0685A' },
-    { name: 'Defensiva Correcta', value: behaviorStats.effGroups.defensive, color: '#D8A657' },
+    { name: 'Miedo / Titubeo', value: behaviorStats.effGroups.fear, color: '#ef4444' },
+    { name: 'Defensiva Correcta', value: behaviorStats.effGroups.defensive, color: '#ee6018' },
     { name: 'Gestión Estándar', value: behaviorStats.effGroups.standard, color: '#7FB2D9' },
-    { name: 'Ejecución Óptima', value: behaviorStats.effGroups.optimal, color: '#4FAE7C' },
+    { name: 'Ejecución Óptima', value: behaviorStats.effGroups.optimal, color: '#a0ca92' },
   ].filter((d) => d.value > 0);
 
   return (
@@ -27,7 +27,7 @@ export default function ConductaTab({ behaviorStats }) {
               <Pie data={effData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={3}>
                 {effData.map((entry, i) => <Cell key={i} fill={entry.color} />)}
               </Pie>
-              <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8, fontSize: 12 }} />
+              <Tooltip contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3, fontSize: 12 }} />
             </PieChart>
           </ResponsiveContainer>
           <div className="flex justify-center gap-4 mt-2 text-xs text-text-dim">

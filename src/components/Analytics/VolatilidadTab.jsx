@@ -25,13 +25,13 @@ export default function VolatilidadTab({ volatilityStats, trades }) {
         <>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={volatilityStats.filter((v) => v.count > 0)}>
-              <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
-              <XAxis dataKey="name" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-              <YAxis yAxisId="left" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-              <YAxis yAxisId="right" orientation="right" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-              <Tooltip contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8 }} />
-              <Bar yAxisId="left" dataKey="pf" name="Profit Factor" fill="#D8A657" radius={[4, 4, 0, 0]} />
-              <Bar yAxisId="right" dataKey="winRate" name="Win Rate %" fill="#4FAE7C" radius={[4, 4, 0, 0]} />
+              <CartesianGrid stroke="#3d3a39" strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+              <YAxis yAxisId="left" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+              <YAxis yAxisId="right" orientation="right" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+              <Tooltip contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3 }} />
+              <Bar yAxisId="left" dataKey="pf" name="Profit Factor" fill="#ee6018" radius={[4, 4, 0, 0]} />
+              <Bar yAxisId="right" dataKey="winRate" name="Win Rate %" fill="#a0ca92" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
           <table className="metric-table mt-4"><tbody>
@@ -46,12 +46,12 @@ export default function VolatilidadTab({ volatilityStats, trades }) {
           <h4>VIX vs R-Multiple (cada punto es un trade)</h4>
           <ResponsiveContainer width="100%" height={250}>
             <ScatterChart>
-              <CartesianGrid stroke="#2B3242" strokeDasharray="3 3" />
-              <XAxis dataKey="vix" name="VIX" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
-              <YAxis dataKey="rMultiple" name="R-Multiple" stroke="#5B6478" fontSize={11} tick={{ fill: '#5B6478' }} />
+              <CartesianGrid stroke="#3d3a39" strokeDasharray="3 3" />
+              <XAxis dataKey="vix" name="VIX" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
+              <YAxis dataKey="rMultiple" name="R-Multiple" stroke="#8a8380" fontSize={11} tick={{ fill: '#8a8380' }} />
               <ZAxis range={[30, 30]} />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: '#1A2029', border: '1px solid #2B3242', borderRadius: 8 }} />
-              <Scatter data={scatterData} fill="#D8A657" opacity={0.6} />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: '#1d1a18', border: '1px solid #3d3a39', borderRadius: 3 }} />
+              <Scatter data={scatterData} fill="#ee6018" opacity={0.6} />
             </ScatterChart>
           </ResponsiveContainer>
         </div>

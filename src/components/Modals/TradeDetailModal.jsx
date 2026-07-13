@@ -7,7 +7,7 @@ import Lightbox from './Lightbox';
 
 export default function TradeDetailModal({ trade, strategies, premarkets, onClose, onEdit }) {
   const d = useMemo(() => computeTradeDiagnostics(trade), [trade]);
-  const pm = premarkets.find((p) => p.date === trade.date && p.ticker.toUpperCase() === trade.symbol.toUpperCase());
+  const pm = premarkets.find((p) => p.date === trade.date && (p.ticker || '').toUpperCase() === (trade.symbol || '').toUpperCase());
   const [lightbox, setLightbox] = useState(null);
   const strat = strategies.find((s) => s.id === trade.strategyId);
 
