@@ -19,7 +19,7 @@ export default function SectionCards({ stats }) {
           <div
             key={item.key}
             className={cn(
-              'py-5 px-5 min-w-0',
+              'py-5 px-5 min-w-0 card-anim',
               i < items.length - 1 && 'border-r border-[#3d3a39]'
             )}
           >

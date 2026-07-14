@@ -13,6 +13,7 @@ import PreMarketPanel from '../components/PreMarketPanel'
 import PlaybookPanel from '../components/PlaybookPanel'
 import { useJournal } from '../hooks/useJournal'
 import { useCardEntrance } from '../hooks/useAnimations'
+import Loader from '../components/ui/Loader'
 import { ArrowLeftRight, Calendar, Target, BookOpen } from 'lucide-react'
 import { $ as anime } from 'animejs'
 
@@ -52,7 +53,7 @@ function SectionWrapper({ children, sectionId, activeSection }) {
 }
 
 export default function Dashboard() {
-  const { trades, strategies, premarkets, stats, addStrategy, deleteStrategy } = useJournal()
+  const { trades, strategies, premarkets, stats, loading, addStrategy, deleteStrategy } = useJournal()
   const [activeSection, setActiveSection] = useState('dashboard')
   const [dateRange, setDateRange] = useState('all')
   const [calCursor, setCalCursor] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() })
@@ -69,6 +70,10 @@ export default function Dashboard() {
         <div className="flex flex-1 flex-col min-w-0 max-w-full">
           <div className="@container/main flex flex-1 flex-col gap-2 min-w-0 max-w-full">
             <div ref={dashboardRef} className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 min-w-0">
+              {loading ? (
+                <Loader label="Cargando journal" />
+              ) : (
+              <>
               {activeSection === 'dashboard' && (
                 <>
                   <SectionCards stats={stats} />
@@ -76,7 +81,7 @@ export default function Dashboard() {
                     <ChartAreaInteractive trades={trades} />
                   </div>
                   <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2 min-w-0">
-                    <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
+                    <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none card-anim">
                       <CardHeader className="flex flex-row items-center gap-2 pb-2">
                         <ArrowLeftRight size={14} className="text-signal-orange shrink-0" />
                         <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
@@ -87,7 +92,7 @@ export default function Dashboard() {
                         <DisplayTable trades={trades.slice(0, 10)} strategies={strategies} />
                       </CardContent>
                     </Card>
-                    <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none">
+                    <Card className="min-w-0 ring-0 border border-[#3d3a39] shadow-none card-anim">
                       <CardHeader className="flex flex-row items-center gap-2 pb-2">
                         <Calendar size={14} className="text-signal-orange shrink-0" />
                         <CardTitle className="font-['Geist_Mono',monospace] text-[12px] uppercase tracking-[-0.24px] leading-none text-[#8a8380] truncate">
@@ -183,6 +188,8 @@ export default function Dashboard() {
                   </Card>
                 </div>
               </SectionWrapper>
+              </>
+              )}
             </div>
           </div>
         </div>
@@ -224,11 +231,11 @@ function DisplayTable({ trades, strategies }) {
           {trades.map((t, i) => {
             const entry = Number(t.entryPrice) || 0
             const exit = Number(t.exitPrice) || 0
-            const qty = Number(t.quantity) || 0
+            const qty = Number(t.size) || 0
             const dir = t.direction === 'short' ? -1 : 1
             const pnl = (exit - entry) * qty * dir
             return (
-              <TableRow key={t.id || i}>
+              <TableRow key={t.id || i} className="table-row-anim" style={{ animationDelay: `${Math.min(i, 10) * 30}ms` }}>
                 <TableCell className="font-medium whitespace-nowrap">{t.date}</TableCell>
                 <TableCell className="truncate max-w-[100px]">{t.symbol}</TableCell>
                 <TableCell className="whitespace-nowrap">

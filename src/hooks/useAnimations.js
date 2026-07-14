@@ -4,7 +4,7 @@ import { $ as anime, stagger, set } from 'animejs';
 export function useCardEntrance(ref) {
   useEffect(() => {
     if (!ref.current) return;
-    const cards = ref.current.querySelectorAll('.glass-card');
+    const cards = ref.current.querySelectorAll('.card-anim');
     if (cards.length === 0) return;
     anime({
       targets: cards,

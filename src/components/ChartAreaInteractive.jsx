@@ -16,7 +16,7 @@ export default function ChartAreaInteractive({ trades }) {
     return sorted.map((t) => {
       const entry = Number(t.entryPrice) || 0
       const exit = Number(t.exitPrice) || 0
-      const qty = Number(t.quantity) || 0
+      const qty = Number(t.size) || 0
       const dir = t.direction === 'short' ? -1 : 1
       const pnl = (exit - entry) * qty * dir
       cum += pnl

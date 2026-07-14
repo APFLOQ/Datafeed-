@@ -67,35 +67,35 @@ export function useJournal() {
     const wins = trades.filter((t) => {
       const entry = Number(t.entryPrice || t.entry_price);
       const exit = Number(t.exitPrice || t.exit_price);
-      const qty = Number(t.quantity);
+      const qty = Number(t.size);
       const dir = t.direction === 'short' ? -1 : 1;
       return (exit - entry) * qty * dir > 0;
     });
     const losses = trades.filter((t) => {
       const entry = Number(t.entryPrice || t.entry_price);
       const exit = Number(t.exitPrice || t.exit_price);
-      const qty = Number(t.quantity);
+      const qty = Number(t.size);
       const dir = t.direction === 'short' ? -1 : 1;
       return (exit - entry) * qty * dir <= 0;
     });
     const totalPnL = trades.reduce((sum, t) => {
       const entry = Number(t.entryPrice || t.entry_price);
       const exit = Number(t.exitPrice || t.exit_price);
-      const qty = Number(t.quantity);
+      const qty = Number(t.size);
       const dir = t.direction === 'short' ? -1 : 1;
       return sum + (exit - entry) * qty * dir;
     }, 0);
     const avgWin = wins.length ? wins.reduce((s, t) => {
       const entry = Number(t.entryPrice || t.entry_price);
       const exit = Number(t.exitPrice || t.exit_price);
-      const qty = Number(t.quantity);
+      const qty = Number(t.size);
       const dir = t.direction === 'short' ? -1 : 1;
       return s + (exit - entry) * qty * dir;
     }, 0) / wins.length : 0;
     const avgLoss = losses.length ? losses.reduce((s, t) => {
       const entry = Number(t.entryPrice || t.entry_price);
       const exit = Number(t.exitPrice || t.exit_price);
-      const qty = Number(t.quantity);
+      const qty = Number(t.size);
       const dir = t.direction === 'short' ? -1 : 1;
       return s + Math.abs((exit - entry) * qty * dir);
     }, 0) / losses.length : 0;
@@ -104,7 +104,7 @@ export function useJournal() {
     const pnls = trades.map((t) => {
       const entry = Number(t.entryPrice || t.entry_price);
       const exit = Number(t.exitPrice || t.exit_price);
-      const qty = Number(t.quantity);
+      const qty = Number(t.size);
       const dir = t.direction === 'short' ? -1 : 1;
       return (exit - entry) * qty * dir;
     });
